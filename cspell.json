@@ -1,0 +1,42 @@
+{
+    "$schema": "https://raw.githubusercontent.com/streetsidesoftware/cspell/main/cspell.schema.json",
+    "version": "0.2",
+    "dictionaryDefinitions": [
+        {
+            "name": "project-words",
+            "path": "./project-words.txt",
+            "addWords": true
+        }
+    ],
+    "dictionaries": [
+        "project-words"
+    ],
+    "ignorePaths": [
+        "src/vs/base/test/node/uri.perf.data.txt",
+        "src/vs/workbench/services/textfile/test/common/fixtures/files.ts",
+        "**/lorem.txt",
+        "build/win32/i18n/Default.hu.isl",
+        "src/vs/base/test/common/filters.perf.data.js",
+        "ThirdPartyNotices.txt",
+        "src/vs/workbench/contrib/tags/electron-sandbox/workspaceTagsService.ts",
+        "extensions/php-language-features/src/features/phpGlobalFunctions.ts",
+        "**tmLanguage.json",
+        "extensions/terminal-suggest/src/shell/zshBuiltinsCache.ts",
+        /**/
+        "cspell.json",
+        "spelling-errors-og.txt",
+        "spelling-errors.txt",
+        "project-words-og.txt",
+        "project-words.txt",
+        "files_most_errors.txt",
+    ]
+}
+
+// Listing files
+// cspell "**" --no-issues
+
+// Saving errors
+// cspell "**" > "spelling-errors.txt"
+
+// Ensuring no issues are found
+// cspell --words-only --unique "**" >> project-words.txt
