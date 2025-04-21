@@ -1,19 +1,19 @@
-
 def sort_valid_words():
     # Sort valid word list
-    with open('project-words.txt', encoding="utf-16") as f:
+    with open("project-words.txt", encoding="utf-16") as f:
         words = f.read().splitlines()
 
     words.sort(key=lambda x: x.lower())
 
-    with open('project-words.txt', 'w', encoding="utf-16") as f:
-        f.write('\n'.join(words))
+    with open("project-words.txt", "w", encoding="utf-16") as f:
+        f.write("\n".join(words))
 
-    print('Words sorted!')
+    print("Words sorted!")
+
 
 def clean_ts_errors():
     # Clean TS error output
-    with open('errors.txt', encoding="utf-8") as f:
+    with open("errors.txt", encoding="utf-8") as f:
         lines = f.read().splitlines()
 
     banned_errors = [
@@ -23,9 +23,9 @@ def clean_ts_errors():
         "TS2304",  # "Cannot find name 'x'."
     ]
 
-    banned_folders = [        "build/"    ]
+    banned_folders = ["build/"]
 
-    accepted_lines= []
+    accepted_lines = []
     for line in lines:
         for ban_word in banned_errors:
             if ban_word in line:
@@ -37,19 +37,20 @@ def clean_ts_errors():
             else:
                 accepted_lines.append(line)
 
-    with open('errors.txt', 'w', encoding="utf-8") as f:
-        f.write('\n'.join(accepted_lines))
+    with open("errors.txt", "w", encoding="utf-8") as f:
+        f.write("\n".join(accepted_lines))
 
-    print('Errors cleaned!')
+    print("Errors cleaned!")
+
 
 def get_files_most_errors():
     # Get files with most errors
-    with open('spelling-errors.txt', encoding="utf-16") as f:
+    with open("spelling-errors.txt", encoding="utf-16") as f:
         lines = f.read().splitlines()
 
     file_errors = {}
     for line in lines:
-        filename = line.split(':')[0]
+        filename = line.split(":")[0]
         if filename not in file_errors:
             file_errors[filename] = 0
 
@@ -57,12 +58,38 @@ def get_files_most_errors():
 
     sorted_files = sorted(file_errors.items(), key=lambda x: x[1], reverse=True)
 
-    with open('files_most_errors.txt', 'w', encoding="utf-8") as f:
+    with open("files_most_errors.txt", "w", encoding="utf-8") as f:
         for file, count in sorted_files:
             f.write(f"{file}: {count}\n")
 
-    print('Files with most errors saved!')
+    print("Files with most errors saved!")
 
-sort_valid_words()
+
+def remove_misspelled_words():
+    # Remove misspelled words from the list
+    with open("project-words.txt", encoding="utf-16") as f:
+        words = f.read().splitlines()
+
+        misspelled_words = [
+"Keybidings",
+"keybindg",
+"keybindining",
+"knigh",
+"knowledges",
+"knwon"
+        ]
+
+    for word in misspelled_words:
+        if word in words:
+            words.remove(word)
+
+    with open("project-words.txt", "w", encoding="utf-16") as f:
+        f.write("\n".join(words))
+
+    print("Misspelled words removed!")
+
+
+# sort_valid_words()
 # clean_ts_errors()
 # get_files_most_errors()
+remove_misspelled_words()
