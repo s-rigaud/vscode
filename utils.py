@@ -89,7 +89,7 @@ def remove_misspelled_words():
     print("Misspelled words removed!")
 
 
-# sort_valid_words()
+sort_valid_words()
 # clean_ts_errors()
 # get_files_most_errors()
-remove_misspelled_words()
+# remove_misspelled_words()
