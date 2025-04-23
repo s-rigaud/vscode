@@ -30,6 +30,7 @@
         "project-words-og.txt",
         "project-words.txt",
         "files_most_errors.txt",
+        "utils.py"
     ]
 }
 

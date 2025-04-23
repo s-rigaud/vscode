@@ -70,14 +70,7 @@ def remove_misspelled_words():
     with open("project-words.txt", encoding="utf-16") as f:
         words = f.read().splitlines()
 
-        misspelled_words = [
-"Keybidings",
-"keybindg",
-"keybindining",
-"knigh",
-"knowledges",
-"knwon"
-        ]
+    misspelled_words = []
 
     for word in misspelled_words:
         if word in words:
@@ -89,7 +82,17 @@ def remove_misspelled_words():
     print("Misspelled words removed!")
 
 
-sort_valid_words()
+def print_words():
+    # Fix words in the list
+    with open("spelling-errors.txt", encoding="utf-16") as f:
+        lines = f.read().splitlines()
+
+    for line in lines[::-1]:
+        print(line)
+
+
+print_words()
+# sort_valid_words()
 # clean_ts_errors()
 # get_files_most_errors()
 # remove_misspelled_words()
